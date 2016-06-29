@@ -35,6 +35,15 @@ type TServerSocket struct {
 	interrupted bool
 }
 
+func (p *TServerSocket) GetListener() (l net.Listener) {
+	return p.listener
+}
+
+func (p *TServerSocket) SetListener(l net.Listener) {
+	p.listener = l
+	return
+}
+
 func NewTServerSocket(listenAddr string) (*TServerSocket, error) {
 	return NewTServerSocketTimeout(listenAddr, 0)
 }

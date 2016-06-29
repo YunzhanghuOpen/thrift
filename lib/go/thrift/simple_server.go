@@ -148,6 +148,11 @@ func (p *TSimpleServer) Serve() error {
 	return nil
 }
 
+func (p *TSimpleServer) ServeWithoutListen() error {
+	p.AcceptLoop()
+	return nil
+}
+
 func (p *TSimpleServer) Stop() error {
 	p.quit <- struct{}{}
 	p.serverTransport.Interrupt()
